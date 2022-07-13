@@ -6,3 +6,4 @@ Diego Bastardo
 Natalia Velásquez
 Tomás Sánchez
 Anamaría Chacón
+Miguel Cuadrado
