@@ -5,3 +5,4 @@ Vicente Mirabal
 Diego Bastardo
 Natalia Velásquez
 Tomás Sánchez
+Anamaría Chacón
