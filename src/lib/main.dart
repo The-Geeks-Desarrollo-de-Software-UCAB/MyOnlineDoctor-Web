@@ -24,6 +24,6 @@ class MyOnlineDoctor extends StatelessWidget {
               TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
             }),
             primaryColor: Colors.blue),
-        home: const SiteLayout());
+        home: SiteLayout());
   }
 }

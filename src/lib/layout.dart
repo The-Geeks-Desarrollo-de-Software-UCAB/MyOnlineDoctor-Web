@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myonlinedoctorweb/widgets/largescreen.dart';
+import 'package:myonlinedoctorweb/widgets/large_screen.dart';
+import 'package:myonlinedoctorweb/widgets/navbar.dart';
 import 'package:myonlinedoctorweb/widgets/responsive.dart';
 import 'package:myonlinedoctorweb/widgets/smallscreen.dart';
 
 class SiteLayout extends StatelessWidget {
-  const SiteLayout({Key? key}) : super(key: key);
-
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-        ),
+        key: scaffoldKey,
+        appBar: topNavigationBar(context, scaffoldKey),
+        drawer: const Drawer(),
         body: const Responsive(
-          largeScreen: LargeScreen(),
-          smallScreen: SmallScreen(),
-          mediumScreen: SmallScreen(),
-        ));
+            largeScreen: LargeScreen(),
+            smallScreen: SmallScreen(),
+            mediumScreen: SmallScreen()));
   }
 }

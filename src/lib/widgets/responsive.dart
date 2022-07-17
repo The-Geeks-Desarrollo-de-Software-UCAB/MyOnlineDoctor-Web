@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import '../constants/screenbreakpoint.dart';
 
 class Responsive extends StatelessWidget {
   final Widget largeScreen;
@@ -14,13 +15,14 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenBreakPoint = ScreenBreakPoint(ScreenSize());
+    final screenBreakPoint =
+        ScreenBreakPoint(ScreenSize()); // estoy creando una dependencia.
     return LayoutBuilder(builder: (context, constraints) {
       double _width = constraints.maxWidth;
-      if (_width >= screenBreakPoint._largeScreenSize) {
+      if (_width >= screenBreakPoint.largeScreenSize) {
         return largeScreen;
-      } else if (_width < screenBreakPoint._largeScreenSize &&
-          _width >= screenBreakPoint._mediumScreenSize) {
+      } else if (_width < screenBreakPoint.largeScreenSize &&
+          _width >= screenBreakPoint.mediumScreenSize) {
         return mediumScreen ?? largeScreen;
       } else {
         return smallScreen ?? largeScreen;
@@ -33,34 +35,3 @@ class Responsive extends StatelessWidget {
 // el ScreenBreakPoint pudiera ser un mediador el cual comunique a los distintos tamanos de screen
 // la funcion para obtener el tamano del contexto la pudiera colocar en un afuncion aparte
 // nota mi clase esta dependiendo de una clase concreta
-class ScreenBreakPoint {
-  final int _largeScreenSize = 1100;
-  final int _mediumScreenSize = 768;
-  final int _smallScreenSize = 768;
-  final int _customScreenSize = 1100;
-  final ScreenSize screenSize;
-
-  ScreenBreakPoint(this.screenSize);
-
-  bool isSmallScreen(BuildContext context) {
-    return screenSize.screenSize(context) < _smallScreenSize;
-  }
-
-  bool isMediumScreen(BuildContext context) {
-    return screenSize.screenSize(context) >= _mediumScreenSize &&
-        screenSize.screenSize(context) < _largeScreenSize;
-  }
-
-  bool isLargeScreen(BuildContext context) {
-    return screenSize.screenSize(context) >= _largeScreenSize;
-  }
-
-  bool isCustomScreen(BuildContext context) {
-    return screenSize.screenSize(context) >= _mediumScreenSize &&
-        screenSize.screenSize(context) <= _customScreenSize;
-  }
-}
-
-class ScreenSize {
-  double screenSize(BuildContext context) => MediaQuery.of(context).size.width;
-}
