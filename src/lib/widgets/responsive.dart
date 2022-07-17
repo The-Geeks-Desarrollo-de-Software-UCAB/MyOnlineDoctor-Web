@@ -16,7 +16,7 @@ class Responsive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenBreakPoint =
-        ScreenBreakPoint(ScreenSize()); // estoy creando una dependencia.
+        ScreenBreakPoint(); // estoy creando una dependencia.
     return LayoutBuilder(builder: (context, constraints) {
       double _width = constraints.maxWidth;
       if (_width >= screenBreakPoint.largeScreenSize) {

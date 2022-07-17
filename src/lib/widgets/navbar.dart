@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
-import 'package:myonlinedoctorweb/widgets/responsive.dart';
 import '../constants/style.dart';
 
 import '../constants/screenbreakpoint.dart';
@@ -17,7 +15,7 @@ class TopNavigationBar extends StatelessWidget {
 }
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
-  final screenBreakPoint = ScreenBreakPoint(ScreenSize());
+  final screenBreakPoint = ScreenBreakPoint();
 
   return AppBar(
     leading: !screenBreakPoint.isSmallScreen(context)
@@ -27,7 +25,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
                 padding: const EdgeInsets.only(left: 14),
                 child: Image.asset(
                   "../assets/icons/cardiology.png",
-                  width: 28,
+                  width: 30,
                 ),
               )
             ],
