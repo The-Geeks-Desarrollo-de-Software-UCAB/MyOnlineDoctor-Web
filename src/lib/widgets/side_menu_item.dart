@@ -5,9 +5,10 @@ import 'package:myonlinedoctorweb/widgets/vertical_menu_item.dart';
 
 class SideMenuItem extends StatelessWidget {
   final String itemName;
-  final Function onTap; //puede que tenga errores con la funcion mas adelante
+  final void Function()?
+      onTap; //puede que tenga errores con la funcion mas adelante
 
-  const SideMenuItem({Key? key, required this.itemName, required this.onTap})
+  const SideMenuItem({Key? key, required this.itemName, this.onTap})
       : super(key: key);
 
   @override
@@ -15,8 +16,8 @@ class SideMenuItem extends StatelessWidget {
     final screenBreakPoint =
         ScreenBreakPoint(); // estoy introduciendo una dependecia
     if (screenBreakPoint.isCustomScreen(context)) {
-      return VerticalMenuItem(itemName: itemName, onTap: () {});
+      return VerticalMenuItem(itemName: itemName, onTap: onTap);
     }
-    return HorizontalMenuItem(itemName: itemName, onTap: () {});
+    return HorizontalMenuItem(itemName: itemName, onTap: onTap);
   }
 }

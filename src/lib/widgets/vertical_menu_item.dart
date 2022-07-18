@@ -6,19 +6,18 @@ import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 
 class VerticalMenuItem extends StatelessWidget {
   final String itemName;
-  final Function onTap;
-  const VerticalMenuItem(
-      {Key? key, required this.itemName, required this.onTap})
+  final void Function()? onTap;
+  const VerticalMenuItem({Key? key, required this.itemName, this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {},
+        onTap: onTap,
         onHover: (value) {
           value
               ? menuController.onHover(itemName)
-              : menuController.hoverItem("not Hovering");
+              : menuController.onHover("not Hovering");
         },
         child: Obx(() => Container(
               color: menuController.isHovering(itemName)

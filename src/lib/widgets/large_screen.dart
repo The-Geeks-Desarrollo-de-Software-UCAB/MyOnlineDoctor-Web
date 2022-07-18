@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctorweb/helpers/local_navigator.dart';
 import 'package:myonlinedoctorweb/widgets/side_menu.dart';
 
 class LargeScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class LargeScreen extends StatelessWidget {
       const Expanded(
         child: SideMenu(),
       ),
-      Expanded(flex: 5, child: Container(color: Colors.blue))
+      Expanded(flex: 5, child: localNavigator())
     ]);
   }
 }

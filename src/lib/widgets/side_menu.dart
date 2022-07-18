@@ -56,16 +56,13 @@ class SideMenu extends StatelessWidget {
                             ? "Citas por Agendar"
                             : itemName,
                         onTap: () {
-                          if (itemName == scheduledPageRoute) {
-                            // ignore: todo
-                            //TODO go to schedule appoiment
-                          }
-
                           if (!menuController.isActive(itemName)) {
                             menuController.changeActiveitemTo(itemName);
                             if (screenBreakPoint.isSmallScreen(context)) {
                               Get.back();
                             }
+                            navigationController.navigateTo(itemName);
+
                             // ignore: todo
                             //TODO go to item name route
                           }
