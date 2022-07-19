@@ -11,7 +11,9 @@ class VideoLlamadaState extends State<VideoLlamadaWidget> {
   int? _remoteUid;
   bool _localUserJoined = false;
   late RtcEngine _engine;
-
+  bool muted = false;
+  bool viewPanel = false;
+  final ClientRole role = ClientRole.Broadcaster;
   @override
   void initState() {
     super.initState();
@@ -72,6 +74,47 @@ class VideoLlamadaState extends State<VideoLlamadaWidget> {
                     : CircularProgressIndicator(),
               ),
             ),
+          ),
+          _toolbar()
+        ],
+      ),
+    );
+  }
+
+  Widget _toolbar() {
+    return Container(
+      alignment: Alignment.bottomCenter,
+      padding: const EdgeInsets.symmetric(vertical: 48),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          RawMaterialButton(
+            onPressed: () {
+              setState(() {
+                muted = !muted;
+              });
+              _engine.muteLocalAudioStream(muted);
+            },
+            child: Icon(
+              muted ? Icons.mic_off : Icons.mic,
+              color: muted ? Colors.white : Colors.blueAccent,
+            ),
+            shape: const CircleBorder(),
+            elevation: 2.0,
+            fillColor: muted ? Colors.blueAccent : Colors.white,
+            padding: const EdgeInsets.all(12.0),
+          ),
+          RawMaterialButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Icon(
+              Icons.call_end,
+              color: Colors.white,
+              size: 35.0,
+            ),
+            shape: const CircleBorder(),
+            elevation: 2.0,
+            fillColor: Colors.redAccent,
+            padding: const EdgeInsets.all(15.0),
           ),
         ],
       ),
