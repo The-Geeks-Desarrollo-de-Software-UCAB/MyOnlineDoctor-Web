@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
+import 'package:myonlinedoctorweb/videollamada/videollamada_widget.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 import '../Modules/cita.dart';
 import './custom_text.dart';
@@ -86,6 +87,12 @@ class CitaAgendadaCard extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                   primary: Colors.lightGreen),
                               onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          VideoLlamadaWidget()),
+                                );
                                 print('iniciar Llamada');
                               },
                               child: const CustomText(
