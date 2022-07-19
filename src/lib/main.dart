@@ -5,6 +5,8 @@ import 'package:myonlinedoctorweb/controllers/menu_controller.dart';
 import 'package:myonlinedoctorweb/controllers/navigation_controller.dart';
 import 'package:myonlinedoctorweb/layout.dart';
 
+import 'controllers/get_appoiments.dart';
+
 void main() {
   Get.put(MenuController());
   Get.put(NavigationController());

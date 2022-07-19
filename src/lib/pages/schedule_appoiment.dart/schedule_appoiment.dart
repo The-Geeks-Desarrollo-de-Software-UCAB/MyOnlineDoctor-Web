@@ -27,6 +27,7 @@ class ScheduleAppoiment extends StatelessWidget {
             Obx(() => Row(
                   children: [
                     Container(
+                      padding: const EdgeInsets.only(left: 460),
                       margin: EdgeInsets.only(
                           top:
                               screenBreakPoint.isSmallScreen(context) ? 56 : 50,
@@ -34,17 +35,16 @@ class ScheduleAppoiment extends StatelessWidget {
                           bottom: 30),
                       child: CustomText(
                           text: menuController.activeItem.value,
-                          size: 24,
+                          size: 35,
                           weight: FontWeight.bold,
                           color: Colors.white),
                     ),
                   ],
                 )),
             const Divider(color: Colors.transparent),
-            Expanded(
-                child: ListView(
-              children: const [ScheduleAppoimentLargeScreen()],
-            ))
+            const Expanded(
+              child: ScheduleAppoimentLargeScreen(),
+            )
           ],
         ));
   }

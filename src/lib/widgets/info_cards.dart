@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
-import '../Modules.dart/Cita.dart';
+import '../Modules/cita.dart';
 import './custom_text.dart';
 
 class CitaCard extends StatelessWidget {
-  final Cita? cita;
+  final Cita cita;
   final Color? topColor;
   final bool? isActive;
   final void Function()? onTap;
 
   const CitaCard(
-      {Key? key, this.cita, this.topColor, this.isActive, this.onTap})
+      {Key? key, required this.cita, this.topColor, this.isActive, this.onTap})
       : super(key: key);
 
   @override
@@ -43,22 +43,25 @@ class CitaCard extends StatelessWidget {
                         ))
                       ],
                     ),
-                    Expanded(child: Container()),
+                    Expanded(
+                        child: Container(
+                      padding: const EdgeInsets.only(bottom: 30),
+                    )),
                     RichText(
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.start,
                       text: TextSpan(children: [
                         TextSpan(
-                            text: "Paciente: ${cita?.paciente}\n",
+                            text: "Paciente: ${cita.paciente}\n",
                             style: TextStyle(
                                 fontSize: 16,
-                                color:
-                                    isActive ?? false ? active : Colors.black)),
+                                color: isActive ?? false ? active : active,
+                                fontWeight: FontWeight.bold)),
                         TextSpan(
-                            text: "Motivo Cita: ${cita?.motivo}\n",
+                            text: "Motivo Cita: ${cita.motivo}\n",
                             style: TextStyle(
                                 fontSize: 16,
-                                color:
-                                    isActive ?? false ? active : Colors.black))
+                                color: isActive ?? false ? active : active,
+                                fontWeight: FontWeight.bold))
                       ]),
                     ),
                     Row(
@@ -69,6 +72,7 @@ class CitaCard extends StatelessWidget {
                           child: ElevatedButton(
                               onPressed: () {
                                 print('Cita aceptada');
+                                // tengo que enviar informacion al back y agregar a citas del dia
                               },
                               child: const CustomText(
                                   text: "Agendar",
