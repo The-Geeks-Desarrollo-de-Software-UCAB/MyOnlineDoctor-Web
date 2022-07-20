@@ -19,13 +19,15 @@ class ScheduleAppoimentLargeScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else {
             print(snapshot.data);
-            return listCitaCard(context, snapshot.data as List<Cita>, _width);
+            return listScheduleAppoimentCard(
+                context, snapshot.data as List<Cita>, _width);
           }
         });
   }
 }
 
-Widget listCitaCard(BuildContext context, List<Cita> citas, double width) {
+Widget listScheduleAppoimentCard(
+    BuildContext context, List<Cita> citas, double width) {
   return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,

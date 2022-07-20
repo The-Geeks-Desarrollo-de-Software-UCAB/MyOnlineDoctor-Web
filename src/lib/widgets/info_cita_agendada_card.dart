@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:myonlinedoctorweb/constants/move_appoiment.dart';
-import 'package:myonlinedoctorweb/constants/screen_size.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
-import 'package:myonlinedoctorweb/pages/Dashboard.dart/dashboard.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 import '../Modules/cita.dart';
 import './custom_text.dart';
 
-class CitaCard extends StatelessWidget {
+class CitaAgendadaCard extends StatelessWidget {
   final Cita cita;
   final Color? topColor;
   final bool? isActive;
   final void Function()? onTap;
 
-  const CitaCard(
+  const CitaAgendadaCard(
       {Key? key, required this.cita, this.topColor, this.isActive, this.onTap})
       : super(key: key);
 
@@ -23,7 +20,7 @@ class CitaCard extends StatelessWidget {
         child: InkWell(
             onTap: onTap,
             child: Container(
-                height: 150,
+                height: 170,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: light,
@@ -71,6 +68,12 @@ class CitaCard extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: isActive ?? false ? active : active,
+                                fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text: "Fecha: 14/9/22\n",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: isActive ?? false ? active : active,
                                 fontWeight: FontWeight.bold))
                       ]),
                     ),
@@ -82,36 +85,11 @@ class CitaCard extends StatelessWidget {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   primary: Colors.lightGreen),
-                              onPressed: () async {
-                                print('Cita aceptada');
-                                await pickDate(context, cita);
-                                await pickTime(context, cita);
-
-                                scheduledAppoiments.add(cita);
-                                print(scheduledAppoiments);
-
-                                //mover a citas agendadas
-                                // tengo que enviar informacion al back
-                              },
-                              child: const CustomText(
-                                  text: "Agendar",
-                                  color: Colors.white,
-                                  size: 12,
-                                  weight: FontWeight.bold)),
-                        )),
-                        Expanded(
-                            child: Container(
-                          padding: const EdgeInsets.all(20),
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.redAccent,
-                              ),
                               onPressed: () {
-                                cita.state = AppoimentState.RECHAZADA;
-                                print(cita.state.name);
+                                print('iniciar Llamada');
                               },
                               child: const CustomText(
-                                  text: "Rechazar",
+                                  text: "Llamar",
                                   color: Colors.white,
                                   size: 12,
                                   weight: FontWeight.bold)),
@@ -121,30 +99,4 @@ class CitaCard extends StatelessWidget {
                   ],
                 ))));
   }
-}
-
-Future<DateTime?> pickDate(BuildContext context, Cita cita) async {
-  final initialDate = DateTime.now();
-  final newDate = await showDatePicker(
-      context: context,
-      initialDate: initialDate,
-      firstDate: DateTime(DateTime.now().year - 5),
-      lastDate: DateTime(DateTime.now().year + 5));
-
-  cita.date = newDate;
-  if (newDate == null) {
-    return null;
-  }
-
-  return newDate;
-}
-
-Future pickTime(BuildContext context, Cita cita) async {
-  final initialTime = TimeOfDay(hour: 9, minute: 0);
-  final newTime =
-      await showTimePicker(context: context, initialTime: initialTime);
-
-  cita.time = newTime;
-
-  return newTime;
 }

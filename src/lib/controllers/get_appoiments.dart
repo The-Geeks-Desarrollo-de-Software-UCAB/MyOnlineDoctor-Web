@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-class GetAppoiment {
+class GetRequestedAppoiment {
   Future<List<Cita>> getAppoiment() async {
     final response = await http.get(Uri.parse(
         "https://gentle-river-68727.herokuapp.com/doctors")); // modificar con url de conexion con API
@@ -17,7 +17,8 @@ class GetAppoiment {
       print(jsonAppoiments); // punto de control.
 
       for (var appoiment in jsonAppoiments) {
-        appoiment.add(Cita('Patricio', 'Lesion muscular')); //modificar
+        appoiment.add(Cita('Patricio', 'Lesion muscular', 'prueba 1',
+            AppoimentState.SOLICITADA)); //modificar
       }
     } else {
       throw Exception("Fallo la conexion");
@@ -33,7 +34,7 @@ class GetAppoimentMock {
     final response = await Future.delayed(
         const Duration(seconds: 2),
         () =>
-            '[{"paciente":"Patricio", "motivo":"Lesion muscular"},{"paciente":"Pablo","motivo": "Se cayo"},{"paciente":"Rafael","motivo": "Picazon"},{"paciente":"DuaLipa","motivo": "exceso de belleza"}]');
+            '[{"paciente":"Patricio", "motivo":"Lesion muscular","id_cita":"prueba 1"},{"paciente":"Pablo","motivo": "Se cayo","id_cita":"prueba 2"},{"paciente":"Rafael","motivo": "Picazon","id_cita":"prueba 3"},{"paciente":"DuaLipa","motivo": "exceso de belleza","id_cita":"prueba 4"}]');
 
     final List<Cita> appoiment = <Cita>[];
 
@@ -42,7 +43,8 @@ class GetAppoimentMock {
     // punto de control.
 
     for (var appoiments in jsonAppoiments) {
-      appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"]));
+      appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
+          appoiments["id_cita"], AppoimentState.SOLICITADA));
     }
 
     return appoiment;
