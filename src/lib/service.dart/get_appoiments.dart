@@ -1,9 +1,38 @@
+import 'package:myonlinedoctorweb/constants/move_appoiment.dart';
+
 import '../Modules/cita.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+//Esto me va a traer las citas por asignar de un doctor
 class GetRequestedAppoiment {
+  Future<List<Cita>> getAppoiment() async {
+    final response = await http.get(Uri.parse(
+        "https://gentle-river-68727.herokuapp.com/doctors")); // modificar con url de conexion con API
+    final List<Cita> appoiment = <Cita>[];
+
+    if (response.statusCode == 200) {
+      String body = utf8.decode(response.bodyBytes);
+
+      final jsonAppoiments = jsonDecode(body);
+
+      print(jsonAppoiments); // punto de control.
+
+      for (var appoiment in jsonAppoiments) {
+        appoiment.add(Cita('Patricio', 'Lesion muscular', 'prueba 1',
+            AppoimentState.SOLICITADA)); //modificar
+      }
+    } else {
+      throw Exception("Fallo la conexion");
+    }
+
+    return appoiment;
+  }
+}
+
+//Esta me va a traer todas las citas ya aceptadas por un un doctor
+class GetScheduledAppoiment {
   Future<List<Cita>> getAppoiment() async {
     final response = await http.get(Uri.parse(
         "https://gentle-river-68727.herokuapp.com/doctors")); // modificar con url de conexion con API
@@ -46,7 +75,7 @@ class GetAppoimentMock {
       appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
           appoiments["id_cita"], AppoimentState.SOLICITADA));
     }
-
+    appoimentsForSchedule = appoiment;
     return appoiment;
   }
 }

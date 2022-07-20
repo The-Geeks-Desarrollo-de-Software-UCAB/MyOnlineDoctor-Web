@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
-import 'package:myonlinedoctorweb/controllers/get_appoiments.dart';
+import 'package:myonlinedoctorweb/service.dart/get_appoiments.dart';
 import 'package:myonlinedoctorweb/widgets/info_cards.dart';
 
 class ScheduleAppoimentLargeScreen extends StatelessWidget {

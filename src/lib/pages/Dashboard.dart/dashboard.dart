@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
-import 'package:myonlinedoctorweb/constants/move_appoiment.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
-import 'package:myonlinedoctorweb/controllers/get_appoiments.dart';
+import 'package:myonlinedoctorweb/service.dart/get_appoiments.dart';
 import 'package:myonlinedoctorweb/widgets/info_cita_agendada_card.dart';
 import '../../constants/style.dart';
 import '../../widgets/custom_text.dart';
@@ -71,7 +70,7 @@ class DashBoard extends StatelessWidget {
                           return listToDayAppoimentCard(
                               context, snapshot.data as List<Cita>, width);
                         }
-                      }))
+                      })),
             ],
           ))
         ]));
@@ -82,20 +81,16 @@ Widget listToDayAppoimentCard(
     BuildContext context, List<Cita> citas, double width) {
   // ScheduledAppoiment storedAppoiment = ScheduledAppoiment();
 
-  for (final value in citas) {
-    scheduledAppoiments.add(value);
-  }
-
   return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      itemCount: scheduledAppoiments.length,
+      itemCount: citas.length,
       itemBuilder: ((context, index) {
         return Container(
             padding:
                 const EdgeInsets.only(left: 30, right: 30, top: 30, bottom: 30),
             child: CitaAgendadaCard(
-              cita: scheduledAppoiments.elementAt(index),
+              cita: citas[index],
               topColor: const Color(0xFF0FAB98),
             ));
       }));
