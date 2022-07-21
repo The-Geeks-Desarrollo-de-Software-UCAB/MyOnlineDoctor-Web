@@ -22,7 +22,7 @@ class CitaCard extends StatelessWidget {
     final width = ScreenSize.screenSize(context);
 
     return Dismissible(
-      key: ValueKey(cita.id_cita),
+      key: ValueKey(cita.idCita),
       direction: DismissDirection.endToStart,
       background: Container(
           color: Colors.red,
@@ -66,7 +66,7 @@ class CitaCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text: TextSpan(children: [
                           TextSpan(
-                              text: "Cita: ${cita.id_cita}\n",
+                              text: "Cita: ${cita.idCita}\n",
                               style: TextStyle(
                                 fontSize: 16,
                                 color: isActive ?? false ? active : active,
@@ -100,8 +100,9 @@ class CitaCard extends StatelessWidget {
                                   await pickTime(context, cita);
 
                                   scheduledAppoiments.add(cita);
-                                  PostScheduledAppoiment.postScheduledAppoiment(
-                                      cita);
+                                  PutScheduledAppoiment.putScheduledAppoiment(
+                                      cita,
+                                      "069bce9d-7c11-46d8-8632-e0923247ed93");
                                   //mover a citas agendadas
                                   // tengo que enviar informacion al back
                                 },
@@ -119,8 +120,8 @@ class CitaCard extends StatelessWidget {
                                   primary: Colors.redAccent,
                                 ),
                                 onPressed: () {
-                                  cita.state = AppoimentState.RECHAZADA;
-                                  print(cita.state.name);
+                                  cita.estadoCita = 'RECHAZADA';
+                                  print(cita.estadoCita);
                                 },
                                 child: const CustomText(
                                     text: "Rechazar",
@@ -147,7 +148,7 @@ Future<DateTime?> pickDate(BuildContext context, Cita cita) async {
       firstDate: DateTime(DateTime.now().year - 5),
       lastDate: DateTime(DateTime.now().year + 5));
 
-  cita.date = newDate;
+  cita.fecha = newDate!;
   if (newDate == null) {
     return null;
   }

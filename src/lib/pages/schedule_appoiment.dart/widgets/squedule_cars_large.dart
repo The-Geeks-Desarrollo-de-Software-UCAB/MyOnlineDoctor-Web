@@ -4,21 +4,29 @@ import 'package:myonlinedoctorweb/constants/screen_size.dart';
 import 'package:myonlinedoctorweb/service.dart/get_appoiments.dart';
 import 'package:myonlinedoctorweb/widgets/info_cards.dart';
 
-class ScheduleAppoimentLargeScreen extends StatelessWidget {
+class ScheduleAppoimentLargeScreen extends StatefulWidget {
   const ScheduleAppoimentLargeScreen({Key? key}) : super(key: key);
 
   @override
+  State<ScheduleAppoimentLargeScreen> createState() =>
+      _ScheduleAppoimentLargeScreenState();
+}
+
+class _ScheduleAppoimentLargeScreenState
+    extends State<ScheduleAppoimentLargeScreen> {
+  @override
   Widget build(BuildContext context) {
     final _width = ScreenSize.screenSize(context);
-    final GetAppoimentMock test = GetAppoimentMock();
+    //final GetAppoimentMock test = GetAppoimentMock();
 
     return FutureBuilder(
-        future: test.getAppoiment(),
+        future: Cita.fetchCitas(''),
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            print(snapshot.data);
+            print(snapshot.data); // este dato me esta dando null
+            print('Estoy aqui');
             return listScheduleAppoimentCard(
                 context, snapshot.data as List<Cita>, _width);
           }

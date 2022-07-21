@@ -13,7 +13,7 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = ScreenSize.screenSize(context);
-    final GetAppoimentMock test = GetAppoimentMock();
+    //final GetAppoimentMock test = GetAppoimentMock();
 
     return Container(
         decoration: const BoxDecoration(
@@ -58,7 +58,7 @@ class DashBoard extends StatelessWidget {
                   )),
               Expanded(
                   child: FutureBuilder(
-                      future: test.getAppoiment(),
+                      future: Cita.fetchCitas(''),
                       builder: (BuildContext context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {

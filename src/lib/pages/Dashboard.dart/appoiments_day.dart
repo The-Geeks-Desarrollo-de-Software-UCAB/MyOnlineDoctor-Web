@@ -19,7 +19,6 @@ class AppoimentsOfTheDay extends StatefulWidget {
 }
 
 class _AppoimentsOfTheDayState extends State<AppoimentsOfTheDay> {
-  final GetAppoimentMock test = GetAppoimentMock();
   final Set<Cita> scheduledAppoiments = {}; //
 
   @override
@@ -37,7 +36,7 @@ class _AppoimentsOfTheDayState extends State<AppoimentsOfTheDay> {
             )),
         Expanded(
             child: FutureBuilder(
-                future: test.getAppoiment(),
+                future: Cita.fetchCitas(''),
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
