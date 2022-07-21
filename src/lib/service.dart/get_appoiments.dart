@@ -1,9 +1,9 @@
-// import 'package:myonlinedoctorweb/constants/move_appoiment.dart';
+import 'package:myonlinedoctorweb/constants/move_appoiment.dart';
 
-// import '../Modules/cita.dart';
-// import 'package:http/http.dart' as http;
-// import 'dart:async';
-// import 'dart:convert';
+import '../Modules/cita.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 // //Esto me va a traer las citas por asignar de un doctor
 // class GetRequestedAppoiment {
@@ -32,25 +32,29 @@
 //   }
 // }
 
-// //Test
-// class GetAppoimentMock {
-//   Future<List<Cita>> getAppoiment() async {
-//     final response = await Future.delayed(
-//         const Duration(seconds: 2),
-//         () =>
-//             '[{"paciente":"Patricio", "motivo":"Lesion muscular","id_cita":"prueba 1"},{"paciente":"Pablo","motivo": "Se cayo","id_cita":"prueba 2"},{"paciente":"Rafael","motivo": "Picazon","id_cita":"prueba 3"},{"paciente":"DuaLipa","motivo": "exceso de belleza","id_cita":"prueba 4"}]');
+//Test
+import 'dart:convert';
 
-//     final List<Cita> appoiment = <Cita>[];
+import 'package:myonlinedoctorweb/Modules/cita.dart';
 
-//     final List<dynamic> jsonAppoiments = jsonDecode(response);
-//     print('estoy decodificando');
-//     // punto de control.
+class GetAppoimentMock {
+  Future<List<Cita1>> getAppoiment() async {
+    final response = await Future.delayed(
+        const Duration(seconds: 2),
+        () =>
+            '[{"paciente":"Patricio", "motivo":"Lesion muscular","id_cita":"prueba 1"},{"paciente":"Pablo","motivo": "Se cayo","id_cita":"prueba 2"},{"paciente":"Rafael","motivo": "Picazon","id_cita":"prueba 3"},{"paciente":"DuaLipa","motivo": "exceso de belleza","id_cita":"prueba 4"}]');
 
-//     for (var appoiments in jsonAppoiments) {
-//       appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
-//           appoiments["id_cita"], AppoimentState.SOLICITADA));
-//     }
-//     appoimentsForSchedule = appoiment;
-//     return appoiment;
-//   }
-// }
+    final List<Cita1> appoiment = <Cita1>[];
+
+    final List<dynamic> jsonAppoiments = jsonDecode(response);
+    print('estoy decodificando');
+    // punto de control.
+
+    for (var appoiments in jsonAppoiments) {
+      appoiment.add(Cita1(appoiments["paciente"], appoiments["motivo"],
+          appoiments["id_cita"], AppoimentState.SOLICITADA));
+    }
+
+    return appoiment;
+  }
+}

@@ -8,6 +8,14 @@ import 'package:flutter/material.dart';
 
 enum AppoimentState { CANCELADA, RECHAZADA, AGENDADA, SOLICITADA }
 
+class Cita1 {
+  String idCita;
+  String motivo;
+  String paciente;
+  AppoimentState estadoCita;
+  Cita1(this.paciente, this.motivo, this.idCita, this.estadoCita);
+}
+
 class Cita {
   Cita(
       {required this.idCita,
