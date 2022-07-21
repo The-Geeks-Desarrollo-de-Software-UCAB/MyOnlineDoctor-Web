@@ -20,15 +20,15 @@ class _ScheduleAppoimentLargeScreenState
     //final GetAppoimentMock test = GetAppoimentMock();
 
     return FutureBuilder(
-        future: Cita.fetchCitas(''),
+        future: Cita.fetchCitasSolicitadas(),
         builder: (BuildContext context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            print(snapshot.data); // este dato me esta dando null
-            print('Estoy aqui');
+          if (snapshot.hasData) {
             return listScheduleAppoimentCard(
                 context, snapshot.data as List<Cita>, _width);
+          } else if (snapshot.hasError) {
+            return Text("ERROR");
+          } else {
+            return Center(child: CircularProgressIndicator());
           }
         });
   }

@@ -58,7 +58,7 @@ class DashBoard extends StatelessWidget {
                   )),
               Expanded(
                   child: FutureBuilder(
-                      future: Cita.fetchCitas(''),
+                      future: Cita.fetchCitasAgendadas(),
                       builder: (BuildContext context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
