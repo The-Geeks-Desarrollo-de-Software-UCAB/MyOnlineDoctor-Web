@@ -1,4 +1,5 @@
-const appId = "b007b19dfa2e4bfaa50fd2cbd5c0a64a";
+const appID = "9670763b32664cbba37968ca7c7ab6d8";
 const token =
-    "006b007b19dfa2e4bfaa50fd2cbd5c0a64aIAB3MllTXbrnu9+Pp8+IpnuYn4xJv5ASIcA9do79vvItrruiVPAAAAAAEABqn0DJmR7aYgEAAQCZHtpi";
-const channel = "test123";
+    "0069670763b32664cbba37968ca7c7ab6d8IADTqDQmdBcBYjs+WGdl/P46lKPIaZ9/0wgkimmXHwOoy/NBbbUAAAAAEABsSV6Ns4naYgEAAQCyidpi";
+
+const channel = "testvicente";

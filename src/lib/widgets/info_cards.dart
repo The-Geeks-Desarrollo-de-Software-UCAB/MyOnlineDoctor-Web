@@ -100,9 +100,9 @@ class CitaCard extends StatelessWidget {
                                   await pickTime(context, cita);
 
                                   //scheduledAppoiments.add(cita);
-                                  PutScheduledAppoiment.putScheduledAppoiment(
-                                      cita,
-                                      "088e361d-3ddf-46f4-8059-3406e189e2a9");
+                                  //PutScheduledAppoiment.putScheduledAppoiment(
+                                  //    cita,
+                                  //    "088e361d-3ddf-46f4-8059-3406e189e2a9");
                                   PutScheduledAppoiment.putAceptada(cita,
                                       "088e361d-3ddf-46f4-8059-3406e189e2a9");
                                   //mover a citas agendadas

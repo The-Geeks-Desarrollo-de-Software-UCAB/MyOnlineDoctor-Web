@@ -18,7 +18,7 @@ class PutScheduledAppoiment {
     final response = await http
         .put(Uri.parse('http://localhost:3000/api/cita/AceptarFecha'), body: {
       "id_cita": cita.idCita,
-      "id_paciente": "38a6fe45-68ba-4ca5-89da-0783928974ea",
+      "id_paciente": "fdbf1a1a-be97-4337-a029-f45df5a2e0",
     });
     print(response.body);
   }
