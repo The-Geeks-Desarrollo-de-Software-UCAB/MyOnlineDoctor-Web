@@ -13,7 +13,7 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = ScreenSize.screenSize(context);
-    final GetAppoimentMock test = GetAppoimentMock();
+    //final GetAppoimentMock test = GetAppoimentMock();
 
     return Container(
         decoration: const BoxDecoration(
@@ -58,7 +58,7 @@ class DashBoard extends StatelessWidget {
                   )),
               Expanded(
                   child: FutureBuilder(
-                      future: test.getAppoiment(),
+                      future: Cita.fetchCitas(''),
                       builder: (BuildContext context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -68,7 +68,7 @@ class DashBoard extends StatelessWidget {
                           print(snapshot.data);
 
                           return listToDayAppoimentCard(
-                              context, snapshot.data as List<Cita1>, width);
+                              context, snapshot.data as List<Cita>, width);
                         }
                       })),
             ],
@@ -78,7 +78,7 @@ class DashBoard extends StatelessWidget {
 }
 
 Widget listToDayAppoimentCard(
-    BuildContext context, List<Cita1> citas, double width) {
+    BuildContext context, List<Cita> citas, double width) {
   // ScheduledAppoiment storedAppoiment = ScheduledAppoiment();
 
   return ListView.builder(

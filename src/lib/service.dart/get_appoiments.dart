@@ -33,28 +33,28 @@ import 'dart:convert';
 // }
 
 //Test
-import 'dart:convert';
+// import 'dart:convert';
 
-import 'package:myonlinedoctorweb/Modules/cita.dart';
+// import 'package:myonlinedoctorweb/Modules/cita.dart';
 
-class GetAppoimentMock {
-  Future<List<Cita1>> getAppoiment() async {
-    final response = await Future.delayed(
-        const Duration(seconds: 2),
-        () =>
-            '[{"paciente":"Patricio", "motivo":"Lesion muscular","id_cita":"prueba 1"},{"paciente":"Pablo","motivo": "Se cayo","id_cita":"prueba 2"},{"paciente":"Rafael","motivo": "Picazon","id_cita":"prueba 3"},{"paciente":"DuaLipa","motivo": "exceso de belleza","id_cita":"prueba 4"}]');
+// class GetAppoimentMock {
+//   Future<List<Cita>> getAppoiment() async {
+//     final response = await Future.delayed(
+//         const Duration(seconds: 2),
+//         () =>
+//             '[{"paciente":"Patricio", "motivo":"Lesion muscular","id_cita":"prueba 1"},{"paciente":"Pablo","motivo": "Se cayo","id_cita":"prueba 2"},{"paciente":"Rafael","motivo": "Picazon","id_cita":"prueba 3"},{"paciente":"DuaLipa","motivo": "exceso de belleza","id_cita":"prueba 4"}]');
 
-    final List<Cita1> appoiment = <Cita1>[];
+//     final List<Cita> appoiment = <Cita>[];
 
-    final List<dynamic> jsonAppoiments = jsonDecode(response);
-    print('estoy decodificando');
-    // punto de control.
+//     final List<dynamic> jsonAppoiments = jsonDecode(response);
+//     print('estoy decodificando');
+//     // punto de control.
 
-    for (var appoiments in jsonAppoiments) {
-      appoiment.add(Cita1(appoiments["paciente"], appoiments["motivo"],
-          appoiments["id_cita"], AppoimentState.SOLICITADA));
-    }
+//     for (var appoiments in jsonAppoiments) {
+//       appoiment.add(Cita(appoiments["paciente"], appoiments["motivo"],
+//           appoiments["id_cita"], AppoimentState.SOLICITADA));
+//     }
 
-    return appoiment;
-  }
-}
+//     return appoiment;
+//   }
+// }
