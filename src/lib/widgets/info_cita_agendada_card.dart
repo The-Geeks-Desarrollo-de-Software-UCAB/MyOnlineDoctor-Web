@@ -6,7 +6,7 @@ import '../Modules/cita.dart';
 import './custom_text.dart';
 
 class CitaAgendadaCard extends StatelessWidget {
-  final Cita cita;
+  final Cita1 cita;
   final Color? topColor;
   final bool? isActive;
   final void Function()? onTap;
