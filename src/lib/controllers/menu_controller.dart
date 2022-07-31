@@ -27,6 +27,8 @@ class MenuController extends GetxController {
       case "Citas por Agendar":
         return _customIcon(Icons.schedule, itemName);
 
+      case historiaMedica:
+        return _customIcon(Icons.text_snippet_outlined, itemName);
       default:
         return _customIcon(Icons.exit_to_app, itemName);
     }

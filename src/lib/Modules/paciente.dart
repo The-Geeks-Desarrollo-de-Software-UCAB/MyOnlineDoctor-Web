@@ -4,7 +4,7 @@ class Paciente {
       required this.usuario,
       required this.contrasena,
       required this.primerNombre,
-      required this.segundoNombre,
+      this.segundoNombre,
       required this.primerApellido,
       required this.segundoApellido,
       required this.genero,
@@ -16,7 +16,7 @@ class Paciente {
   String usuario;
   String contrasena;
   String primerNombre;
-  String segundoNombre;
+  String? segundoNombre;
   String primerApellido;
   String segundoApellido;
   String genero;
