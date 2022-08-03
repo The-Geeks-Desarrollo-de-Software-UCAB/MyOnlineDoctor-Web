@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
+import 'package:myonlinedoctorweb/service.dart/post_appoiments.dart';
 
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 
@@ -62,144 +63,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Row(
-                  children: [
-                    Container(
-                      width: 170,
-                      padding: const EdgeInsets.only(
-                        left: 35,
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 40),
-                        child: CustomText(
-                          text: 'Fecha',
-                          size: 20,
-                          weight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                        width: 200,
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        margin: const EdgeInsets.symmetric(horizontal: 15),
-                        child: TextFormField(
-                          controller: myController,
-                          style: const TextStyle(
-                              fontSize: 20, color: Colors.black),
-                          decoration: InputDecoration(
-                              hintText: '${widget.cita.fecha}',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(5)),
-                              fillColor: Colors.white,
-                              filled: true),
-                        )),
-                    Container(
-                      width: 170,
-                      padding: const EdgeInsets.only(left: 20),
-                      child: const Padding(
-                        padding: EdgeInsets.only(left: 40),
-                        child: CustomText(
-                          text: 'Motivo',
-                          size: 20,
-                          weight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                        width: 500,
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        margin: const EdgeInsets.symmetric(horizontal: 15),
-                        child: TextFormField(
-                          style: const TextStyle(
-                              fontSize: 20, color: Colors.black),
-                          decoration: InputDecoration(
-                              hintText: 'Motivo de la Consulta',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(5)),
-                              fillColor: Colors.white,
-                              filled: true),
-                        ))
-                  ],
-                ),
-              ),
-              const Divider(height: 20, color: Colors.transparent),
-              Row(
-                children: [
-                  Container(
-                    width: 170,
-                    padding: const EdgeInsets.only(left: 35, right: 15),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 40),
-                      child: CustomText(
-                        text: 'Doctor',
-                        size: 20,
-                        weight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                      width: 900,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      margin: const EdgeInsets.symmetric(horizontal: 15),
-                      child: TextFormField(
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
-                        decoration: InputDecoration(
-                            hintText: 'Nombre del Doctor',
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(5)),
-                            fillColor: Colors.white,
-                            filled: true),
-                      )),
-                ],
-              ),
-              const Divider(
-                height: 20,
-                color: Colors.transparent,
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: 170,
-                    padding: const EdgeInsets.only(left: 35),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 40),
-                      child: CustomText(
-                        text: 'Paciente',
-                        size: 20,
-                        weight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                      width: 900,
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      margin: const EdgeInsets.symmetric(horizontal: 15),
-                      child: TextFormField(
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.black),
-                        decoration: InputDecoration(
-                            hintText: 'Nombre del Paciente',
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(5)),
-                            fillColor: Colors.white,
-                            filled: true),
-                      )),
-                ],
-              ),
-              const Divider(height: 20, color: Colors.transparent),
+              const Divider(height: 40, color: Colors.transparent),
               Row(children: [
                 Container(
                   width: 200,
@@ -398,8 +262,9 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                       plan: plan,
                       prescripcion: prescripcion,
                     );
-
-                    //metodo de put de historia medica
+                    // Falta generar id de rsgistro
+                    PostHistoriaMedica.crearHistoriaMedica(
+                        widget.cita, historiaMedica);
                   },
                   child: const Center(
                     child: CustomText(

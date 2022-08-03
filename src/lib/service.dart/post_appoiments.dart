@@ -37,13 +37,16 @@ class PutDeclineAppoiment {
   }
 }
 
-class PutHistoriaMedica {
+class PostHistoriaMedica {
   // a esto le tengo que pasar los datos del formulario.
   static crearHistoriaMedica(Cita cita, HistoriaMedica historiaMedica) async {
     //falta que me traiga las citas.
+
+    print(cita.motivo);
     final response = await http.post(
-        Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/cita/Crear'),
+        Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/registro/Crear'),
         body: {
+          "id_registro": "1",
           "id_cita": cita.idCita,
           "id_doctor": cita.id_doctor,
           "motivo": cita.motivo,
@@ -53,5 +56,7 @@ class PutHistoriaMedica {
           "examen": historiaMedica.examenes,
           "diagnostico": historiaMedica.diagnostico,
         });
+
+    print(response.body);
   }
 }
