@@ -7,6 +7,7 @@ import 'package:myonlinedoctorweb/controllers/menu_controller.dart';
 import 'package:myonlinedoctorweb/controllers/navigation_controller.dart';
 import 'package:myonlinedoctorweb/firebase_options.dart';
 import 'package:myonlinedoctorweb/layout.dart';
+import 'package:myonlinedoctorweb/pages/Login/loginPage.dart';
 
 import 'service.dart/get_appoiments.dart';
 
@@ -35,6 +36,6 @@ class MyOnlineDoctor extends StatelessWidget {
               TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
             }),
             primaryColor: Colors.blue),
-        home: SiteLayout());
+        home: LoginPage());
   }
 }

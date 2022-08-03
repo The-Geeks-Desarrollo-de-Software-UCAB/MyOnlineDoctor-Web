@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:myonlinedoctorweb/pages/Login/loginPage.dart';
 import 'package:myonlinedoctorweb/widgets/side_menu_item.dart';
 import '../constants/controllers.dart';
 import '../routing/routes.dart';
@@ -60,6 +62,14 @@ class SideMenu extends StatelessWidget {
                             menuController.changeActiveitemTo(itemName);
                             if (screenBreakPoint.isSmallScreen(context)) {
                               Get.back();
+                            }
+                            if (itemName == 'Salir') {
+                              FirebaseAuth.instance.signOut().then((value) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()));
+                              });
                             }
                             navigationController.navigateTo(itemName);
 
