@@ -78,9 +78,11 @@ class Cita {
   }
 
   factory Cita.fromJson(Map<String, dynamic> json) {
+    final dynamic fecha_json = json["_fecha"]["_fecha"] ?? "No Asignada";
+
     return Cita(
       idCita: json["_identificador"]["_id"],
-      fecha: json["_fecha"]["_fecha"] ?? "No Asignada",
+      fecha: fecha_json,
       duracion: json["_duracion"]["_duracion"],
       tipoCita: json["_tipo"],
       estadoCita: json["_estado"],
