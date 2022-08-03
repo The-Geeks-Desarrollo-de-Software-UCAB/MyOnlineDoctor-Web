@@ -22,23 +22,23 @@ class Paciente {
       required this.estadoSuscripcion,
       this.imagen});
 
-  String id_paciente;
-  String usuario;
-  String contrasena;
-  String primerNombre;
-  String? segundoNombre;
-  String primerApellido;
-  String segundoApellido;
-  String genero;
-  String numeroMovil;
-  String altura;
-  String correo;
-  String alergia;
-  String antecendentes;
-  DateTime fechaNacimiento;
-  String operacion;
-  String peso;
-  String estadoSuscripcion;
+  final String id_paciente;
+  final String usuario;
+  final String contrasena;
+  final String primerNombre;
+  final String? segundoNombre;
+  final String primerApellido;
+  final String segundoApellido;
+  final String genero;
+  final String numeroMovil;
+  final int altura;
+  final String correo;
+  final String alergia;
+  final String antecendentes;
+  final dynamic fechaNacimiento;
+  final String operacion;
+  final String peso;
+  final String estadoSuscripcion;
 
   String? imagen;
 
@@ -93,24 +93,23 @@ class Paciente {
     print(DateTime.parse(json["_fechaNacimiento"]["_fechaNacimiento"]));
 
     final paciente = Paciente(
-        id_paciente: json["_idPaciente"]["_id"],
-        primerNombre: json["_nombre"]["_primerNombre"],
-        segundoNombre: json["_nombre"]["_segundoNombre"],
-        primerApellido: json["_apellido"]["_primerApellido"],
-        segundoApellido: json["_apellido"]["_segundoApellido"],
-        alergia: json["_alergia"]["_alergia"],
-        genero: json["_genero"]["_genero"],
-        altura: json["_altura"]["_altura"],
-        peso: json["_peso"]["_peso"],
-        antecendentes: json["_antecedente"]["_antecedente"],
-        correo: json["_correo"]["_correo"],
-        fechaNacimiento:
-            DateTime.parse(json["_fechaNacimiento"]["_fechaNacimiento"]),
-        usuario: json["_usuario"]["_usuario"],
-        contrasena: json["_password"]["_password"],
-        numeroMovil: json["_numeroMovil"]["_numeroMovil"],
-        operacion: json["_operacion"]["_operacion"],
-        estadoSuscripcion: json["_estadoSuscripcion"]);
+        id_paciente: json["_idPaciente"]["_id"] as String,
+        correo: json["_correo"]["_correo"] as String,
+        primerNombre: json["_nombre"]["_primerNombre"] as String,
+        segundoNombre: json["_nombre"]["_segundoNombre"] as String,
+        primerApellido: json["_apellido"]["_primerApellido"] as String,
+        segundoApellido: json["_apellido"]["_segundoApellido"] as String,
+        alergia: json["_alergia"]["_alergia"] as String,
+        altura: json["_altura"]["_altura"] as int,
+        genero: json["_genero"]["_genero"] as String,
+        peso: json["_peso"]["_peso"] as String,
+        antecendentes: json["_antecedente"]["_antecedente"] as String,
+        fechaNacimiento: json["_fechaNacimiento"]["_fechaNacimiento"] as String,
+        usuario: json["_usuario"]["_usuario"] as String,
+        contrasena: json["_password"]["_password"] as String,
+        numeroMovil: json["_numeroMovil"]["_numeroMovil"] as String,
+        operacion: json["_operacion"]["_operacion"] as String,
+        estadoSuscripcion: json["_estadoSuscripcion"] as String);
 
     print("se creo el paciente");
     return paciente;
