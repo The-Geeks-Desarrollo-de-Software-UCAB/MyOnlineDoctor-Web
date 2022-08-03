@@ -21,62 +21,74 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
         body: Container(
       child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 350),
-            child: Center(
-                child: SingleChildScrollView(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: Column(children: [Text('aaaaa')]),
-                      width: 500,
+          Center(
+              child: SingleChildScrollView(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                        height: size.height,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                alignment: Alignment.centerLeft,
+                                fit: BoxFit.fitHeight,
+                                image: NetworkImage(
+                                    'https://i.ibb.co/SRMgsbq/loginscreen.jpg'))),
+                        width: size.width * 0.6),
+                  ),
+                  Expanded(
+                      child: Center(
+                          child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        logoDegradado(),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        titulo(),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        reusableTextField(
+                            'Email', Icons.email, false, _emailTextController),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        reusableTextField('Contraseña', Icons.lock, true,
+                            _passwordTextController),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        botonReusable(context, true, () {
+                          FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _emailTextController.text,
+                                  password: _passwordTextController.text)
+                              .then((value) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SiteLayout(),
+                                ));
+                          }).onError((error, stackTrace) {
+                            print("Error ${error.toString()}");
+                          });
+                        }),
+                      ],
                     ),
-                    Container(
-                      child: Column(
-                        children: [
-                          logoDegradado(),
-                          titulo(),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          reusableTextField('Email', Icons.email, false,
-                              _emailTextController),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          reusableTextField('Contraseña', Icons.lock, true,
-                              _passwordTextController),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          botonReusable(context, true, () {
-                            FirebaseAuth.instance
-                                .signInWithEmailAndPassword(
-                                    email: _emailTextController.text,
-                                    password: _passwordTextController.text)
-                                .then((value) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SiteLayout(),
-                                  ));
-                            }).onError((error, stackTrace) {
-                              print("Error ${error.toString()}");
-                            });
-                          }),
-                        ],
-                      ),
-                      width: 500,
-                    )
-                  ]),
-            )),
-          )
+                    width: 500,
+                  )))
+                ]),
+          )),
         ],
       ),
     ));
@@ -85,8 +97,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget logoDegradado() {
     return Image.network(
       'https://i.ibb.co/sRhR8SK/logo2.png',
-      height: 150,
-      width: 150,
+      height: 250,
+      width: 250,
     );
   }
 
@@ -96,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
       textAlign: TextAlign.center,
       style: TextStyle(
           color: AppColors.MAINCOLOR3,
-          fontSize: 30,
+          fontSize: 50,
           fontWeight: FontWeight.bold),
     );
   }
