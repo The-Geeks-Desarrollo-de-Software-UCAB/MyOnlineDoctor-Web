@@ -71,7 +71,7 @@ class CitaAgendadaCard extends StatelessWidget {
                                 color: isActive ?? false ? active : active,
                                 fontWeight: FontWeight.bold)),
                         TextSpan(
-                            text: "Fecha: 14/9/22\n",
+                            text: "Fecha: ${cita.fecha}\n",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: isActive ?? false ? active : active,
@@ -91,9 +91,10 @@ class CitaAgendadaCard extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          VideoLlamadaWidget()),
+                                          VideoLlamadaWidget(cita)),
                                 );
                                 print('iniciar Llamada');
+                                // necesito pasarle la llamada
                               },
                               child: const CustomText(
                                   text: "Llamar",

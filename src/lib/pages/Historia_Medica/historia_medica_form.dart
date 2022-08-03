@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
 
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
@@ -6,7 +7,9 @@ import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 import '../../constants/style.dart';
 
 class HistoriaMedicaForm extends StatefulWidget {
-  const HistoriaMedicaForm({Key? key}) : super(key: key);
+  Cita cita;
+
+  HistoriaMedicaForm({Key? key, required this.cita}) : super(key: key);
 
   @override
   State<HistoriaMedicaForm> createState() => HistoriaMedicaFormState();
@@ -89,7 +92,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                           style: const TextStyle(
                               fontSize: 20, color: Colors.black),
                           decoration: InputDecoration(
-                              hintText: 'Fecha de la Consulta',
+                              hintText: '${widget.cita.fecha}',
                               border: OutlineInputBorder(
                                   borderSide: BorderSide.none,
                                   borderRadius: BorderRadius.circular(5)),

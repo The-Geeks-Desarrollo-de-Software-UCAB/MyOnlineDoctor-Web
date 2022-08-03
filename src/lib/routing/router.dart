@@ -14,7 +14,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const ScheduleAppoiment());
 
     case historiaMedica:
-      return _getPageRoute(const HistoriaMedicaForm());
+      return _getPageRoute(const LogOut());
 
     default:
       return _getPageRoute(const LogOut());
