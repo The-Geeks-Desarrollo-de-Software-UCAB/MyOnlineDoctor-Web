@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
 
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 
@@ -14,11 +15,11 @@ class HistoriaMedicaForm extends StatefulWidget {
 class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
   final formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
-  String? prescripcion;
-  String? historia;
-  String? diagnostico;
-  String? plan;
-  String? examenes;
+  String prescripcion = '';
+  String historia = '';
+  String diagnostico = '';
+  String plan = '';
+  String examenes = '';
   DateTime? fecha;
   // el motivo se pasa utomaticamente
   // la fecha se pudiera pasar automaticamnte
@@ -215,7 +216,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                   child: TextFormField(
                     onSaved: (value) {
                       setState(() {
-                        diagnostico = value;
+                        diagnostico = value ?? "";
                       });
                     },
                     keyboardType: TextInputType.multiline,
@@ -248,7 +249,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                   child: TextFormField(
                     onSaved: (value) {
                       setState(() {
-                        plan = value;
+                        plan = value ?? '';
                       });
                     },
                     keyboardType: TextInputType.multiline,
@@ -286,7 +287,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                   child: TextFormField(
                     onSaved: (value) {
                       setState(() {
-                        historia = value;
+                        historia = value ?? '';
                       });
                     },
                     keyboardType: TextInputType.multiline,
@@ -319,7 +320,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                   child: TextFormField(
                     onSaved: (value) {
                       setState(() {
-                        examenes = value;
+                        examenes = value ?? "";
                       });
                     },
                     keyboardType: TextInputType.multiline,
@@ -360,7 +361,7 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                         child: TextFormField(
                           onSaved: (value) {
                             setState(() {
-                              prescripcion = value;
+                              prescripcion = value ?? '';
                             });
                           },
                           style: const TextStyle(
@@ -386,7 +387,16 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.green)),
                   onPressed: () {
-                    print('Guardar Historia medica del paciente');
+                    formKey.currentState?.save();
+                    final historiaMedica = HistoriaMedica(
+                      diagnostico: diagnostico,
+                      examenes: examenes,
+                      historia: historia,
+                      plan: plan,
+                      prescripcion: prescripcion,
+                    );
+
+                    //metodo de put de historia medica
                   },
                   child: const Center(
                     child: CustomText(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myonlinedoctorweb/Modules/paciente.dart';
 import 'package:myonlinedoctorweb/constants/move_appoiment.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
@@ -73,7 +74,7 @@ class CitaCard extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               )),
                           TextSpan(
-                              text: "Paciente: ${cita.paciente}\n",
+                              text: "Paciente: ${cita.id_paciente}\n",
                               style: TextStyle(
                                   fontSize: 16,
                                   color: isActive ?? false ? active : active,
@@ -104,7 +105,7 @@ class CitaCard extends StatelessWidget {
                                   //    cita,
                                   //    "088e361d-3ddf-46f4-8059-3406e189e2a9");
                                   PutScheduledAppoiment.putAceptada(cita,
-                                      "088e361d-3ddf-46f4-8059-3406e189e2a9");
+                                      "088e361d-3ddf-46f4-8059-3406e189e2a9"); //cambiar al id del doctor
                                   //mover a citas agendadas
                                   // tengo que enviar informacion al back
                                 },
@@ -124,6 +125,9 @@ class CitaCard extends StatelessWidget {
                                 onPressed: () {
                                   cita.estadoCita = 'RECHAZADA';
                                   print(cita.estadoCita);
+
+                                  PutDeclineAppoiment.putRechazada(
+                                      cita); // falta probar
                                 },
                                 child: const CustomText(
                                     text: "Rechazar",

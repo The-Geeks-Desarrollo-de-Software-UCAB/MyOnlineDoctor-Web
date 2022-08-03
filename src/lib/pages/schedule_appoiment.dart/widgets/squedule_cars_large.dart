@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
-import 'package:myonlinedoctorweb/service.dart/get_appoiments.dart';
 import 'package:myonlinedoctorweb/widgets/info_cards.dart';
 
 class ScheduleAppoimentLargeScreen extends StatefulWidget {
@@ -17,16 +16,17 @@ class _ScheduleAppoimentLargeScreenState
   @override
   Widget build(BuildContext context) {
     final _width = ScreenSize.screenSize(context);
-    //final GetAppoimentMock test = GetAppoimentMock();
+    Future<List<Cita>> data = Cita.fetchCitasSolicitadas();
 
     return FutureBuilder(
-        future: Cita.fetchCitasSolicitadas(),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.hasData) {
+        future: data,
+        builder: (BuildContext context, AsyncSnapshot<List<Cita>> snapshot) {
+          if (snapshot.hasError) {
+            print(snapshot.error);
+            return Text("ERROR");
+          } else if (snapshot.hasData) {
             return listScheduleAppoimentCard(
                 context, snapshot.data as List<Cita>, _width);
-          } else if (snapshot.hasError) {
-            return Text("ERROR");
           } else {
             return Center(child: CircularProgressIndicator());
           }

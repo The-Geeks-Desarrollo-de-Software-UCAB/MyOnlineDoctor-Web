@@ -59,7 +59,7 @@ class CitaAgendadaCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             )),
                         TextSpan(
-                            text: "Paciente: ${cita.paciente}\n",
+                            text: "Paciente: ${cita.id_paciente}\n",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: isActive ?? false ? active : active,

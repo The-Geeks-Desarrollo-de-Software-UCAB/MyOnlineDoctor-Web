@@ -59,16 +59,17 @@ class DashBoard extends StatelessWidget {
               Expanded(
                   child: FutureBuilder(
                       future: Cita.fetchCitasAgendadas(),
-                      builder: (BuildContext context, snapshot) {
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<Cita>> snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(
                               child: CircularProgressIndicator());
                         } else {
                           print(snapshot.data);
-
+                          List<Cita> snap = snapshot.data ?? [];
                           return listToDayAppoimentCard(
-                              context, snapshot.data as List<Cita>, width);
+                              context, snap as List<Cita>, width);
                         }
                       })),
             ],
