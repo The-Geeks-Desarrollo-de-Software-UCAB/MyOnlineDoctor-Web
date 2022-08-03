@@ -12,7 +12,7 @@ enum AppoimentState { CANCELADA, RECHAZADA, AGENDADA, SOLICITADA }
 class Cita {
   Cita({
     required this.idCita,
-    required this.fecha,
+    this.fecha,
     required this.duracion,
     required this.tipoCita,
     required this.estadoCita,
@@ -23,7 +23,7 @@ class Cita {
   });
 
   String idCita;
-  DateTime fecha;
+  DateTime? fecha;
   int duracion;
   String tipoCita;
   String estadoCita;
@@ -62,7 +62,7 @@ class Cita {
   }*/
   static Future<List<Cita>> fetchCitasSolicitadas() async {
     final response = await http.get(Uri.parse(
-        'http://localhost:3000/api/cita/SolicitadasDoctor088e361d-3ddf-46f4-8059-3406e189e2a9'));
+        'https://myonlinedoctorapi.herokuapp.com/api/cita/SolicitadasDoctore49421aa-6508-4902-aec2-75d519299bb6'));
     print(response.body);
     if (response.statusCode == 200) {
       List<dynamic> list = json.decode(response.body);

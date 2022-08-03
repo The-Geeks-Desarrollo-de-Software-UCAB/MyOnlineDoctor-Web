@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
+import 'package:myonlinedoctorweb/pages/Dashboard.dart/mis_pacientes.dart';
 import 'package:myonlinedoctorweb/service.dart/get_appoiments.dart';
 import 'package:myonlinedoctorweb/widgets/info_cita_agendada_card.dart';
 import '../../constants/style.dart';
@@ -31,17 +32,16 @@ class DashBoard extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                  flex: 20,
                   child: Container(
-                    padding:
-                        const EdgeInsets.only(right: 260, left: 260, top: 30),
-                    child: const CustomText(
-                      text: 'Mis Pacientes',
-                      size: 30,
-                      weight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ))
+                padding: const EdgeInsets.only(right: 260, left: 260, top: 30),
+                child: const CustomText(
+                  text: 'Mis Pacientes',
+                  size: 30,
+                  weight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              )),
+              const MisPacientes()
             ],
           ),
           Expanded(

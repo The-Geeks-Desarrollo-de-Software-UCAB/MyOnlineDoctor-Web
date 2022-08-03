@@ -377,24 +377,27 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                   ],
                 ),
               ),
-              FloatingActionButton(
-                // When the user presses the button, show an alert dialog containing
-                // the text that the user has entered into the text field.
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        // Retrieve the text that the user has entered by using the
-                        // TextEditingController.
-                        content: Text(myController.text),
-                      );
-                    },
-                  );
-                },
-                tooltip: 'Show me the value!',
-                child: const Icon(Icons.text_fields),
-              )
+              Container(
+                width: 200,
+                height: 80,
+                padding: const EdgeInsets.only(bottom: 40),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green)),
+                  onPressed: () {
+                    print('Guardar Historia medica del paciente');
+                  },
+                  child: const Center(
+                    child: CustomText(
+                      text: 'Guardar',
+                      size: 16,
+                      weight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
