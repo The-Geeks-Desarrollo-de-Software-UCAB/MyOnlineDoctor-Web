@@ -6,6 +6,7 @@ import 'package:myonlinedoctorweb/Modules/paciente.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
 import 'package:myonlinedoctorweb/pages/Detalle_Paciente/detalle_paciente.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
+import '../../service.dart/post_appoiments.dart';
 
 class PacientesCard extends StatelessWidget {
   const PacientesCard({Key? key, required this.paciente}) : super(key: key);
@@ -115,7 +116,7 @@ class PacientesCard extends StatelessWidget {
                 left: 115,
                 child: ElevatedButton(
                     onPressed: () {
-                      print('Bloquear');
+                      PutBloqueoPaciente.bloquearPaciente(paciente);
                     },
                     child: const CustomText(
                         text: "Bloquear",

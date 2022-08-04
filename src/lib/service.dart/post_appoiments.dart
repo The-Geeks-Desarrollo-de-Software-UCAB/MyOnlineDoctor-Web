@@ -69,7 +69,12 @@ class PutBloqueoPaciente {
     final response = await http.put(
         Uri.parse(
             "https://myonlinedoctorapi.herokuapp.com/api/paciente/Bloquear"),
-        body: {"id_paciente": paciente.idPaciente});
+        body: {
+          "id_paciente": paciente.idPaciente,
+          "id_doctor": "e49421aa-6508-4902-aec2-75d519299bb6",
+          "razon": "Mal comportamiento"
+        });
+    print(response.body);
   }
 }
 

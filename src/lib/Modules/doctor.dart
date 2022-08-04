@@ -64,14 +64,14 @@ class Doctor {
 
   factory Doctor.fromJson(Map<dynamic, dynamic> json) {
     return Doctor(
-        id: json["id_doctor"],
-        nombre: json["primerNombre"],
-        apellido: json["primerApellido"],
+        id: json["doctor"]["_id"]["_id"],
+        nombre: json["_nombre"]["primerNombre"],
+        apellido: json["_apellido"]["_primerApellido"],
         genero: json["genero"],
         imagen: json["imagen"],
         especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')],
         //  Especialidades.parseEspecialidadesLista(json["especialidades"]),
-        calificaciones: json["promedioCalificacion"]);
+        calificaciones: json["_promedioCalificacion"]["_promedioCalificacion"]);
   }
 
   String getEspecialidadesToString() {
