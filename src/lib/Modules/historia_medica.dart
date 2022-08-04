@@ -1,5 +1,5 @@
 class HistoriaMedica {
-  String id_registro;
+  String idRegistro;
   String historia;
   String diagnostico;
   String plan;
@@ -7,7 +7,7 @@ class HistoriaMedica {
   String prescripcion;
 
   HistoriaMedica(
-      {required this.id_registro,
+      {required this.idRegistro,
       required this.historia,
       required this.diagnostico,
       required this.examenes,

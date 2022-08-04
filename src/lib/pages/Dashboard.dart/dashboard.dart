@@ -27,22 +27,24 @@ class DashBoard extends StatelessWidget {
           ],
         )),
         child: Row(children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                  child: Container(
-                padding: const EdgeInsets.only(right: 260, left: 260, top: 30),
-                child: const CustomText(
-                  text: 'Mis Pacientes',
-                  size: 30,
-                  weight: FontWeight.bold,
-                  color: Colors.white,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(
+                      right: 150, left: 150, top: 30, bottom: 30),
+                  child: const CustomText(
+                    text: 'Mis Pacientes',
+                    size: 30,
+                    weight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              )),
-              const MisPacientes()
-            ],
+                const MisPacientes()
+              ],
+            ),
           ),
           Expanded(
               child: Column(

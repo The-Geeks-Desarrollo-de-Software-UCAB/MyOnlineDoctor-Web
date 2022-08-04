@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
+import 'package:myonlinedoctorweb/service.dart/post_appoiments.dart';
 import 'package:myonlinedoctorweb/videollamada/videollamada_widget.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 import '../Modules/cita.dart';
@@ -98,6 +99,25 @@ class CitaAgendadaCard extends StatelessWidget {
                               },
                               child: const CustomText(
                                   text: "Llamar",
+                                  color: Colors.white,
+                                  size: 12,
+                                  weight: FontWeight.bold)),
+                        )),
+                        Expanded(
+                            child: Container(
+                          padding: const EdgeInsets.all(20),
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.redAccent,
+                              ),
+                              onPressed: () {
+                                cita.estadoCita = 'CANCELADA';
+                                print(cita.estadoCita);
+                                PutCancelarCitaAgendada.cancelarCitaAgendada(
+                                    cita);
+                              },
+                              child: const CustomText(
+                                  text: "Cancelar",
                                   color: Colors.white,
                                   size: 12,
                                   weight: FontWeight.bold)),

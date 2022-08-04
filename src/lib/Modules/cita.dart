@@ -35,7 +35,7 @@ class Cita {
     print('hello111');
     final response = await http.get(Uri.parse(
         'https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasDoctore49421aa-6508-4902-aec2-75d519299bb6'));
-    print(response.body);
+
     if (response.statusCode == 200) {
       List<Cita> list = parseCitas(response.body);
       return list;

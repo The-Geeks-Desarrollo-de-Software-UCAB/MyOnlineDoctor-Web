@@ -3,7 +3,9 @@ import 'dart:html';
 import 'package:http/http.dart' as http;
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
+import 'package:myonlinedoctorweb/Modules/paciente.dart';
 
+//agenda una cita probar con heroku
 class PutScheduledAppoiment {
   static putScheduledAppoiment(Cita cita, String id_doctor) async {
     final response = await http.put(
@@ -16,6 +18,7 @@ class PutScheduledAppoiment {
     print(response.body);
   }
 
+  //duda que hace esto
   static putAceptada(Cita cita, String id_doctor) async {
     final response = await http.put(
         Uri.parse(
@@ -37,16 +40,13 @@ class PutDeclineAppoiment {
   }
 }
 
+//Listo
 class PostHistoriaMedica {
-  // a esto le tengo que pasar los datos del formulario.
   static crearHistoriaMedica(Cita cita, HistoriaMedica historiaMedica) async {
-    //falta que me traiga las citas.
-
-    print(cita.motivo);
     final response = await http.post(
         Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/registro/Crear'),
         body: {
-          "id_registro": historiaMedica.id_registro,
+          "id_registro": historiaMedica.idRegistro,
           "id_cita": cita.idCita,
           "id_doctor": cita.id_doctor,
           "motivo": cita.motivo,
@@ -57,6 +57,25 @@ class PostHistoriaMedica {
           "diagnostico": historiaMedica.diagnostico,
         });
 
+    print(response.body);
+  }
+}
+
+//Falta probar
+class PutBloqueoPaciente {
+  static bloquearPaciente(Paciente paciente) async {
+    final response = await http
+        .put(Uri.parse("uri"), body: {"id_paciente": paciente.idPaciente});
+  }
+}
+
+//Listo
+class PutCancelarCitaAgendada {
+  static cancelarCitaAgendada(Cita cita) async {
+    final response = await http.put(
+        Uri.parse(
+            "https://myonlinedoctorapi.herokuapp.com/api/cita/CancelarDoctor"),
+        body: {"id_cita": cita.idCita, "id_doctor": cita.id_doctor});
     print(response.body);
   }
 }

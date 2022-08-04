@@ -20,25 +20,27 @@ class MisPacientes extends StatelessWidget {
             print(snapshot.error);
             return const Text("ERROR");
           } else if (snapshot.hasData) {
+            print('El snapshot tiene data');
             print(snapshot);
             final List<Paciente> snap = snapshot.data ?? [];
             final cantidadPacientes = snap.length;
-            return Container(
-              height: 550,
-              width: 300,
+            return Expanded(
+                child: SingleChildScrollView(
               child: Column(
                 children: [
-                  CustomText(
-                    text: '$cantidadPacientes',
-                    size: 15,
-                    weight: FontWeight.bold,
-                    color: Colors.white,
+                  Center(
+                    child: CustomText(
+                      text: 'Cantidad Pacientes: $cantidadPacientes',
+                      size: 20,
+                      weight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                   listPatientsCard(
                       context, snapshot.data as List<Paciente>, _width),
                 ],
               ),
-            );
+            ));
           } else {
             return const Center(child: CircularProgressIndicator());
           }
@@ -49,12 +51,18 @@ class MisPacientes extends StatelessWidget {
 Widget listPatientsCard(
     BuildContext context, List<Paciente> pacientes, double width) {
   return ListView.builder(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: pacientes.length,
       itemBuilder: ((context, index) {
-        return PacientesCard(
-          paciente: pacientes[index],
+        return Container(
+          padding:
+              const EdgeInsets.only(bottom: 30, left: 50, right: 50, top: 30),
+          height: 350,
+          width: 80,
+          child: PacientesCard(
+            paciente: pacientes[index],
+          ),
         );
       }));
 }

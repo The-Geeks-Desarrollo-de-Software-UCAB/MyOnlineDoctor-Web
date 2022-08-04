@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
 import 'package:myonlinedoctorweb/service.dart/post_appoiments.dart';
+import 'package:myonlinedoctorweb/widgets/cupertino_alert_dialog.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
@@ -264,26 +265,11 @@ class HistoriaMedicaFormState extends State<HistoriaMedicaForm> {
                       historia: historia,
                       plan: plan,
                       prescripcion: prescripcion,
-                      id_registro: uuid.v4(),
+                      idRegistro: uuid.v4(),
                     );
-                    CupertinoAlertDialog(
-                      title: const Text("Alerta!!!"),
-                      content: const Text("Desea Guardar el Registro?"),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                            PostHistoriaMedica.crearHistoriaMedica(
-                                widget.cita, historiaMedica);
-                            return Navigator.pop(context, 'Inicio');
-                          },
-                          child: const Text('OK'),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('Cancel'),
-                        ),
-                      ],
-                    );
+
+                    PostHistoriaMedica.crearHistoriaMedica(
+                        widget.cita, historiaMedica);
                   },
                   child: const Center(
                     child: CustomText(
