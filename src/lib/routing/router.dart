@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:myonlinedoctorweb/pages/LogOut/logout.dart';
 import 'package:myonlinedoctorweb/routing/routes.dart';
 import '../pages/Dashboard.dart/dashboard.dart';
-import '../pages/Historia_Medica/historia_medica_form.dart';
+import '../pages/lista_doctores/lista_doctores.dart';
 import '../pages/schedule_appoiment.dart/schedule_appoiment.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,8 +14,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case scheduledPageRoute:
       return _getPageRoute(const ScheduleAppoiment());
 
-    case historiaMedica:
-      return _getPageRoute(const LogOut());
+    case listaDoctores:
+      return _getPageRoute(const ListaDoctores());
 
     default:
       return _getPageRoute(const LogOut());

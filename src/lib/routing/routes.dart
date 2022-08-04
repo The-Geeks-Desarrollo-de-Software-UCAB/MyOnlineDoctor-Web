@@ -1,11 +1,11 @@
 const dashBoardPageRoute = "Inicio";
 const scheduledPageRoute = "Citas por Agendar";
-const historiaMedica = "Historia Medica";
+const listaDoctores = "Lista Doctores";
 const exitaccount = "Salir";
 
 List sideMenuItems = [
   dashBoardPageRoute,
   scheduledPageRoute,
-  historiaMedica,
+  listaDoctores,
   exitaccount
 ];

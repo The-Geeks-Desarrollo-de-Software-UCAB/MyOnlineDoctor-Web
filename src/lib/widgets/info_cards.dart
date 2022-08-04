@@ -104,8 +104,8 @@ class CitaCard extends StatelessWidget {
                                   //PutScheduledAppoiment.putScheduledAppoiment(
                                   //    cita,
                                   //    "088e361d-3ddf-46f4-8059-3406e189e2a9");
-                                  PutScheduledAppoiment.putAceptada(cita,
-                                      "088e361d-3ddf-46f4-8059-3406e189e2a9"); //cambiar al id del doctor
+                                  PutScheduledAppoiment.putScheduledAppoiment(
+                                      cita); //cambiar al id del doctor
                                   //mover a citas agendadas
                                   // tengo que enviar informacion al back
                                 },

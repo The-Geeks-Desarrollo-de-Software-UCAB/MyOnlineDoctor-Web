@@ -5,15 +5,17 @@ import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
 import 'package:myonlinedoctorweb/Modules/paciente.dart';
 
-//agenda una cita probar con heroku
+//Funcionando
 class PutScheduledAppoiment {
-  static putScheduledAppoiment(Cita cita, String id_doctor) async {
+  static putScheduledAppoiment(Cita cita) async {
+    print(cita.fecha);
+    print(cita.id_doctor);
     final response = await http.put(
         Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/cita/Agendar'),
         body: {
           "id_cita": cita.idCita,
-          "fecha": DateTime.now().toString(),
-          "id_doctor": id_doctor
+          "fecha": cita.fecha.toString(),
+          "id_doctor": cita.id_doctor
         });
     print(response.body);
   }
@@ -64,8 +66,10 @@ class PostHistoriaMedica {
 //Falta probar
 class PutBloqueoPaciente {
   static bloquearPaciente(Paciente paciente) async {
-    final response = await http
-        .put(Uri.parse("uri"), body: {"id_paciente": paciente.idPaciente});
+    final response = await http.put(
+        Uri.parse(
+            "https://myonlinedoctorapi.herokuapp.com/api/paciente/Bloquear"),
+        body: {"id_paciente": paciente.idPaciente});
   }
 }
 

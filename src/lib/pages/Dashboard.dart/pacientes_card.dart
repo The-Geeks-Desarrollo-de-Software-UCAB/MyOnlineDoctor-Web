@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:myonlinedoctorweb/Modules/paciente.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
+import 'package:myonlinedoctorweb/pages/Detalle_Paciente/detalle_paciente.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 
 class PacientesCard extends StatelessWidget {
@@ -95,7 +96,11 @@ class PacientesCard extends StatelessWidget {
                       const Divider(height: 25, color: Colors.transparent),
                       ElevatedButton(
                           onPressed: () {
-                            print('ver mas');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetallePaciente(paciente: paciente)));
                           },
                           child: const CustomText(
                               text: "Ver mas",
