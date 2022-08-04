@@ -1,6 +1,7 @@
 import 'dart:convert';
 //import 'dart:ffi';
 import 'package:http/http.dart' as http;
+import '../data.dart';
 
 import 'doctor.dart';
 import 'paciente.dart';
@@ -31,10 +32,11 @@ class Cita {
   String id_doctor; // cambiar esto por que solo me aparece el id
   String id_paciente; // cambiar por que solo me aparece el id
 
-  static Future<List<Cita>> fetchCitasAgendadas() async {
+  static Future<List<Cita>> fetchCitasAgendadas(String doctorId) async {
     print('hello111');
+
     final response = await http.get(Uri.parse(
-        'https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasDoctore49421aa-6508-4902-aec2-75d519299bb6'));
+        'https://myonlinedoctorapi.herokuapp.com/api/cita/AceptadasDoctor${doctorId}'));
 
     if (response.statusCode == 200) {
       List<Cita> list = parseCitas(response.body);
@@ -59,9 +61,10 @@ class Cita {
     }
     //final doctorResponse =Doctor.fromMap(response.body);
   }*/
-  static Future<List<Cita>> fetchCitasSolicitadas() async {
+  static Future<List<Cita>> fetchCitasSolicitadas(String doctorId) async {
+    print(doctorId);
     final response = await http.get(Uri.parse(
-        'https://myonlinedoctorapi.herokuapp.com/api/cita/SolicitadasDoctore49421aa-6508-4902-aec2-75d519299bb6'));
+        'https://myonlinedoctorapi.herokuapp.com/api/cita/SolicitadasDoctor${doctorId}'));
 
     if (response.statusCode == 200) {
       List<dynamic> list = json.decode(response.body);

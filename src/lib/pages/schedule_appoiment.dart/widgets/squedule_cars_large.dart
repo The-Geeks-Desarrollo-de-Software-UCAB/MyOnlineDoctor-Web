@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
+import 'package:myonlinedoctorweb/data.dart';
 import 'package:myonlinedoctorweb/widgets/info_cards.dart';
 
 class ScheduleAppoimentLargeScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ScheduleAppoimentLargeScreenState
   @override
   Widget build(BuildContext context) {
     final _width = ScreenSize.screenSize(context);
-    Future<List<Cita>> data = Cita.fetchCitasSolicitadas();
+    Future<List<Cita>> data = Cita.fetchCitasSolicitadas(id_doctor);
 
     return FutureBuilder(
         future: data,

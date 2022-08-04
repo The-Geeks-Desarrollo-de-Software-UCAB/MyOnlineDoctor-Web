@@ -43,10 +43,10 @@ class Paciente {
   // String? imagen;
 
   // Este metodo esta funcionand con un id del paciente no del doctor.
-  static Future<List<Paciente>> fetchPacientesPorDoctor() async {
+  static Future<List<Paciente>> fetchPacientesPorDoctor(String doctorId) async {
     print('hello111');
     final response = await http.get(Uri.parse(
-        'https://myonlinedoctorapi.herokuapp.com/api/paciente/Todos'));
+        'https://myonlinedoctorapi.herokuapp.com/api/paciente/PorDoctor${doctorId}'));
     //print(response.body);
     if (response.statusCode == 200) {
       List<dynamic> list = json.decode(response.body);

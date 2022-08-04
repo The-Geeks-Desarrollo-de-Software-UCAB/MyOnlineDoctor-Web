@@ -37,7 +37,6 @@ class MyOnlineDoctor extends StatelessWidget {
     print(nombre_doctor);
     print(apellido_doctor);
     print('Vicente');
-    
 
     return MultiProvider(
         providers: [
@@ -59,6 +58,6 @@ class MyOnlineDoctor extends StatelessWidget {
                   TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
                 }),
                 primaryColor: Colors.blue),
-            home: SiteLayout()));
+            home: const LoginPage()));
   }
 }

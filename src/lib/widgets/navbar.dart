@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 import '../constants/style.dart';
+import '../data.dart';
 
 import '../constants/screenbreakpoint.dart';
 import 'custom_text.dart';
@@ -75,7 +76,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) {
           width: 24,
         ),
         CustomText(
-          text: "Dr. Diego Bastardo",
+          text: "Dr.$nombre_doctor ${apellido_doctor}",
           color: lightGrey,
           size: null,
           weight: null,

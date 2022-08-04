@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/paciente.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
+import 'package:myonlinedoctorweb/data.dart';
 import 'package:myonlinedoctorweb/pages/Dashboard.dart/pacientes_card.dart';
 import 'package:myonlinedoctorweb/widgets/custom_text.dart';
 
@@ -11,7 +12,7 @@ class MisPacientes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _width = ScreenSize.screenSize(context);
-    final pacientes = Paciente.fetchPacientesPorDoctor();
+    final pacientes = Paciente.fetchPacientesPorDoctor(id_doctor);
     return FutureBuilder(
         future: pacientes,
         builder:

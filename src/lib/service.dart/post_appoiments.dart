@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
 import 'package:myonlinedoctorweb/Modules/paciente.dart';
+import 'package:myonlinedoctorweb/data.dart';
 
 //Funcionando
 class PutScheduledAppoiment {
@@ -69,7 +70,7 @@ class PutBloqueoPaciente {
             "https://myonlinedoctorapi.herokuapp.com/api/paciente/Bloquear"),
         body: {
           "id_paciente": paciente.idPaciente,
-          "id_doctor": "e49421aa-6508-4902-aec2-75d519299bb6",
+          "id_doctor": id_doctor,
           "razon": "Mal comportamiento"
         });
     print(response.body);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/constants/screen_size.dart';
+import 'package:myonlinedoctorweb/data.dart';
 import 'package:myonlinedoctorweb/pages/Dashboard.dart/mis_pacientes.dart';
 import 'package:myonlinedoctorweb/service.dart/get_appoiments.dart';
 import 'package:myonlinedoctorweb/widgets/info_cita_agendada_card.dart';
@@ -60,7 +61,7 @@ class DashBoard extends StatelessWidget {
                   )),
               Expanded(
                   child: FutureBuilder(
-                      future: Cita.fetchCitasAgendadas(),
+                      future: Cita.fetchCitasAgendadas(id_doctor),
                       builder: (BuildContext context,
                           AsyncSnapshot<List<Cita>> snapshot) {
                         if (snapshot.connectionState ==
