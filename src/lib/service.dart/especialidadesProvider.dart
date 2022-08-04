@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:myonlinedoctorweb/Modules/doctor.dart';
 import 'package:myonlinedoctorweb/Modules/especialidades.dart';
+import 'package:myonlinedoctorweb/Modules/paciente.dart';
 
 class EspecialidadesProvider extends ChangeNotifier {
   List<Especialidades> especialidadesDisponibles = [
@@ -40,7 +41,7 @@ class EspecialidadesProvider extends ChangeNotifier {
         json.decode(responseDoc.body)[0]['doctor']['_nombre']['_primerNombre']);
 
     print(resultado[0]['imagen']);
-    //final paciente2 =  await Paciente.fetchPaciente('pedrito@gmail.com');
+    // final paciente2 =  await Paciente.fetchPaciente('pedrito@gmail.com');
     // print(paciente2.id_paciente + '----------------------------------------->');
 
     print(Doctor(
@@ -52,5 +53,21 @@ class EspecialidadesProvider extends ChangeNotifier {
       imagen: resultado[0]['imagen'],
       nombre: resultado[0]['doctor']['_nombre']['_primerNombre'],
     ));
+
+    //final respuesta = await http.get(Uri.parse( 'https://myonlinedoctorapi.herokuapp.com/api/paciente/porcorreopedrito@gmail.com'));
+
+    // final respuestaDecodificada = json.decode(respuesta.body);
+
+    //final paciente = Paciente.fromJson(respuestaDecodificada);
+
+    //final paciente2 =  await Paciente.fetchPaciente('pedrito@gmail.com');
+
+    // print(paciente2.primerNombre);
+    //print(paciente2.segundoNombre);
+
+    // print(respuestaDecodificada['_correo']['_correo']);
+    // print(Paciente.fromJson(respuestaDecodificada));
+
+    //print(paciente2);
   }
 }

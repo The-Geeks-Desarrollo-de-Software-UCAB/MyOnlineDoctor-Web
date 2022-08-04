@@ -13,10 +13,10 @@ class ListaDoctores extends StatefulWidget {
   const ListaDoctores({Key? key}) : super(key: key);
 
   @override
-  State<ListaDoctores> createState() => _ListaDoctoresState();
+  State<ListaDoctores> createState() => _ListaDoctores();
 }
 
-class _ListaDoctoresState extends State<ListaDoctores> {
+class _ListaDoctores extends State<ListaDoctores> {
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
   String? e = '';
@@ -25,9 +25,23 @@ class _ListaDoctoresState extends State<ListaDoctores> {
   Widget build(BuildContext context) {
     final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
     final items = especialidadesProvider.especialidadesDisponibles;
+    // final items = [
+    //   Especialidades(id: 0, nombre: '...'),
+    //   Especialidades(id: 1, nombre: 'Alergología'),
+    //   Especialidades(id: 2, nombre: 'Anestesiología'),
+    //   Especialidades(id: 3, nombre: 'Cardiología'),
+    //   Especialidades(id: 4, nombre: 'Dermatología'),
+    //   Especialidades(id: 5, nombre: 'Endocrinología'),
+    //   Especialidades(id: 6, nombre: 'Geriatría'),
+    //   Especialidades(id: 7, nombre: 'Hematología'),
+    //   Especialidades(id: 8, nombre: 'Medicina interna'),
+    //   Especialidades(id: 9, nombre: 'Nefrología'),
+    //   Especialidades(id: 10, nombre: 'Neumología')
+    // ];
 
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -42,7 +56,7 @@ class _ListaDoctoresState extends State<ListaDoctores> {
             'Doctores',
             style: TextStyle(color: AppColors.WHITE),
           ),
-          /*actions: [
+          actions: [
             DropdownButton<Especialidades>(
                 items: items
                     .map<DropdownMenuItem<Especialidades>>((Especialidades a) {
@@ -69,7 +83,7 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                 onPressed: () => showSearch(
                     context: context, delegate: DoctorSearchDelegate()),
                 icon: Icon(Icons.search_outlined)),
-          ],*/
+          ],
         ),
         body:
 
@@ -104,11 +118,10 @@ class _ListaDoctoresState extends State<ListaDoctores> {
             // ])
 
             FutureBuilder(
-                future: Doctor.fetchDoctores(id_especialidad!),
+                future: Doctor.fetchDoctores(id_especialidad!, true),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     //return ListaDoctores([Doctor(id: 1, nombre: 'David', apellido: 'Rey', genero: 'M', imagen:'https://images.unsplash.com/photo-1658140917228-129162d2a5b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' , especialidades: [Especialidades(id: 1, nombre: 'Cardiologia'), Especialidades(id: 2, nombre: 'Traumatologia')])]);
-
                     return Center(child: CircularProgressIndicator());
                   } else {
                     return ListadoDoctores(snapshot.data);

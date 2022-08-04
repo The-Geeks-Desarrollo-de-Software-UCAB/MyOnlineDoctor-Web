@@ -7,7 +7,7 @@ Widget botonReusable(BuildContext context, bool isLogin, Function onTap) {
     onPressed: () => {
       onTap()
       /*  Navigator.push(
-          context, MaterialPageRoute(builder: (context) => DoctoresPage()))*/
+          context, MaterialPageRoute(builder: (context) => ListaDoctores()))*/
     },
     style: ElevatedButton.styleFrom(
         primary: AppColors.MAINCOLOR3,
