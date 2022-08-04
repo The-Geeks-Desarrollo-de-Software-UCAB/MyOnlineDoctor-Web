@@ -46,7 +46,7 @@ class PostHistoriaMedica {
     final response = await http.post(
         Uri.parse('https://myonlinedoctorapi.herokuapp.com/api/registro/Crear'),
         body: {
-          "id_registro": "1",
+          "id_registro": historiaMedica.id_registro,
           "id_cita": cita.idCita,
           "id_doctor": cita.id_doctor,
           "motivo": cita.motivo,
