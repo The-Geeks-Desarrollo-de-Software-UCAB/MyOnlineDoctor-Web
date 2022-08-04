@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:http/http.dart' as http;
 import 'package:myonlinedoctorweb/Modules/cita.dart';
 import 'package:myonlinedoctorweb/Modules/historia_medica.dart';
