@@ -24,19 +24,27 @@ class Doctor {
   String genero;
   String imagen;
   List<Especialidades> especialidades;
-  double? calificaciones;
+  dynamic calificaciones;
   // factory Doctor.fromJson(String str) => Doctor.fromMap(json.decode(str));
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
-  static Future<List<Doctor>> fetchDoctores(String especialidad) async {
-    final response = await http
-        .get(Uri.parse('http://10.0.2.2:3000/api/doctorSpecialty/all'));
+  static Future<List<Doctor>> fetchDoctores(String idespecialidad) async {
+    String ruta;
+    // if (idespecialidad == '') {
+    ruta = 'https://myonlinedoctorapi.herokuapp.com/api/doctor/Todos';
+    // }   else {
+    /* ruta =
+          'https://myonlinedoctorapi.herokuapp.com/api/doctor/PorEspecialidad' +
+              idespecialidad;
+    }*/
+    print(ruta);
+    final response = await http.get(Uri.parse(ruta));
     if (response.statusCode == 200) {
       List<Doctor> list = parseDoctores(response.body);
       return list;
     } else {
-      throw Exception('Error al Cargar Especialidades');
+      throw Exception('Error al Cargar Doctores');
     }
     //final doctorResponse =Doctor.fromMap(response.body);
   }

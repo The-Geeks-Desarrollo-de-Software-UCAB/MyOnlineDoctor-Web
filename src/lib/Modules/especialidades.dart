@@ -11,7 +11,8 @@ class Especialidades {
   List<Object?> get props => [id, nombre];
 
   static Future<List<Especialidades>> fetchEspecialidades() async {
-    const url = 'http://10.0.2.2:3000/especialidad/get/';
+    const url =
+        'https://myonlinedoctorapi.herokuapp.com/api/doctor/Especialidades';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       List<Especialidades> list = parseEspecialidades(response.body);
@@ -25,8 +26,7 @@ class Especialidades {
     List<Especialidades> list = [];
 
     for (var item in response) {
-      list.add(
-          Especialidades(id: item['id_especialidad'], nombre: item['nombre']));
+      list.add(Especialidades(id: 0, nombre: item['_especialidad']));
     }
     return list;
   }

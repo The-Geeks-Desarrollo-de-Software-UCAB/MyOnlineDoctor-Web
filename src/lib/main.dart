@@ -7,7 +7,10 @@ import 'package:myonlinedoctorweb/controllers/menu_controller.dart';
 import 'package:myonlinedoctorweb/controllers/navigation_controller.dart';
 import 'package:myonlinedoctorweb/firebase_options.dart';
 import 'package:myonlinedoctorweb/layout.dart';
+import 'package:myonlinedoctorweb/pages/Lista_Doctores/doctorProvider.dart';
 import 'package:myonlinedoctorweb/pages/Login/loginPage.dart';
+import 'package:myonlinedoctorweb/service.dart/especialidadesProvider.dart';
+import 'package:provider/provider.dart';
 
 import 'service.dart/get_appoiments.dart';
 
@@ -24,18 +27,26 @@ class MyOnlineDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "MyOnlineDoctor",
-        theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
-            textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
-                .apply(bodyColor: Colors.black),
-            pageTransitionsTheme: const PageTransitionsTheme(builders: {
-              TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-              TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
-            }),
-            primaryColor: Colors.blue),
-        home: LoginPage());
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+              create: (_) => EspecialidadesProvider(), lazy: false),
+          ChangeNotifierProvider(
+              create: (_) => DoctoresProvider(), lazy: false),
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: "MyOnlineDoctor",
+            theme: ThemeData(
+                scaffoldBackgroundColor: Colors.white,
+                textTheme:
+                    GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
+                        .apply(bodyColor: Colors.black),
+                pageTransitionsTheme: const PageTransitionsTheme(builders: {
+                  TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+                  TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
+                }),
+                primaryColor: Colors.blue),
+            home: LoginPage()));
   }
 }

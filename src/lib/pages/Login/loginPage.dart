@@ -80,7 +80,23 @@ class _LoginPageState extends State<LoginPage> {
                                   builder: (context) => SiteLayout(),
                                 ));
                           }).onError((error, stackTrace) {
-                            print("Error ${error.toString()}");
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('Error al ingresar'),
+                                content: Text(
+                                    'Es posible que el correo o la contraseña estén incorrectos, o que no exista un doctor con el correo ingresado. Por favor verifique sus datos.'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text(
+                                        'OK',
+                                        style: TextStyle(
+                                            color: AppColors.MAINCOLOR3),
+                                      ))
+                                ],
+                              ),
+                            );
                           });
                         }),
                       ],
