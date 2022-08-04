@@ -3,7 +3,9 @@ import 'dart:html';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:myonlinedoctorweb/Modules/cita.dart';
+import 'package:myonlinedoctorweb/locator.dart';
 import 'package:myonlinedoctorweb/pages/Historia_Medica/historia_medica_form.dart';
+import 'package:myonlinedoctorweb/videollamada/service/videollamadaservice.dart';
 import 'package:myonlinedoctorweb/videollamada/settings.dart';
 import 'package:myonlinedoctorweb/videollamada/videollamada_widget.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
@@ -17,10 +19,12 @@ class VideoLlamadaState extends State<VideoLlamadaWidget> {
   bool viewPanel = false;
   final ClientRole role = ClientRole.Broadcaster;
   Cita cita;
+  VideollamadaService citaService = locator.get<VideollamadaService>();
   VideoLlamadaState(this.cita);
   @override
   void initState() {
     super.initState();
+
     initAgora();
   }
 
