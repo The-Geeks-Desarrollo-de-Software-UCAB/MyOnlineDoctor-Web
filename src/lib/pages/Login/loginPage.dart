@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:myonlinedoctorweb/constants/style.dart';
+import 'package:myonlinedoctorweb/data.dart';
 import 'package:myonlinedoctorweb/helpers/botonReusable.dart';
 import 'package:myonlinedoctorweb/helpers/reusableTextField.dart';
 import 'package:myonlinedoctorweb/layout.dart';
@@ -69,6 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                           height: 50,
                         ),
                         botonReusable(context, true, () {
+
+                          SetValores.SetValoresDoctor(_emailTextController.text);
                           FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                                   email: _emailTextController.text,

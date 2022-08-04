@@ -6,6 +6,8 @@ import 'package:myonlinedoctorweb/Modules/doctor.dart';
 import 'package:myonlinedoctorweb/Modules/especialidades.dart';
 import 'package:myonlinedoctorweb/Modules/paciente.dart';
 
+import '../data.dart';
+
 class EspecialidadesProvider extends ChangeNotifier {
   List<Especialidades> especialidadesDisponibles = [
     Especialidades(id: 0, nombre: '...')
@@ -53,6 +55,14 @@ class EspecialidadesProvider extends ChangeNotifier {
       imagen: resultado[0]['imagen'],
       nombre: resultado[0]['doctor']['_nombre']['_primerNombre'],
     ));
+
+
+    SetValores.SetValoresDoctor('nkrojn0');
+    print(id_doctor);
+    print(nombre_doctor);
+    print(apellido_doctor);
+    print('Vicente');
+    
 
     //final respuesta = await http.get(Uri.parse( 'https://myonlinedoctorapi.herokuapp.com/api/paciente/porcorreopedrito@gmail.com'));
 

@@ -12,6 +12,7 @@ import 'package:myonlinedoctorweb/pages/Login/loginPage.dart';
 import 'package:myonlinedoctorweb/service.dart/especialidadesProvider.dart';
 import 'package:provider/provider.dart';
 
+import 'data.dart';
 import 'service.dart/get_appoiments.dart';
 
 void main() async {
@@ -27,6 +28,13 @@ class MyOnlineDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SetValores.SetValoresDoctor('nkrojn0');
+    print(id_doctor);
+    print(nombre_doctor);
+    print(apellido_doctor);
+    print('Vicente');
+    
+
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(
